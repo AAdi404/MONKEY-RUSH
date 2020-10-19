@@ -50,6 +50,7 @@ var left;
 var deducted;
 var touched;
 var avoid;
+var highscore;
 function preload(){
 gameoverSound=loadSound("gameover.mp3");
 jumpSound=loadSound("jump.mp3");
@@ -123,6 +124,7 @@ left=0;
 deducted=0;
 touched=0;
 avoid=0;
+highscore=0;
 }
 function draw(){
 background("red");
@@ -250,6 +252,9 @@ rockGroup.destroyEach();
 if(mousePressedOver(restart)){
 reset();
 }
+if(highscore<time){
+highscore=time;
+}
 }
 drawSprites();
 fill("black");
@@ -282,6 +287,9 @@ text("rocks touched: "+touched,25,125);
 fill("black");
 textSize(15);
 text("rocks avoided: "+avoid,25,137.5);
+fill("black");
+textSize(15);
+text("High Score: "+highscore,25,150);
 }
 function reset(){
 gameState=PLAY;
